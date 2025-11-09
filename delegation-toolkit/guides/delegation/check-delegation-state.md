@@ -19,7 +19,7 @@ Use the `CaveatEnforcerClient` to check the available balances for specific scop
 
 ## Prerequisites
 
-- [Install and set up the Delegation Toolkit.](../../get-started/install.md)
+- [Install and set up the Smart Accounts Kit.](../../get-started/install.md)
 - [Create a delegator account.](execute-on-smart-accounts-behalf.md#3-create-a-delegator-account)
 - [Create a delegate account.](execute-on-smart-accounts-behalf.md#4-create-a-delegate-account)
 - [Create a delegation with an ERC-20 periodic scope.](use-delegation-scopes/spending-limit.md#erc-20-periodic-scope)
@@ -34,7 +34,7 @@ This client allows you to interact with the caveat enforcers of the delegation, 
 
 ```typescript
 import { environment, publicClient as client } from './config.ts'
-import { createCaveatEnforcerClient } from '@metamask/delegation-toolkit'
+import { createCaveatEnforcerClient } from '@metamask/smart-accounts-kit'
 
 const caveatEnforcerClient = createCaveatEnforcerClient({
   environment,
@@ -48,9 +48,9 @@ const caveatEnforcerClient = createCaveatEnforcerClient({
 ```typescript
 import { sepolia as chain } from 'viem/chains'
 import { createPublicClient, http } from 'viem'
-import { getDeleGatorEnvironment } from '@metamask/delegation-toolkit'
+import { getSmartAccountsEnvironment } from '@metamask/smart-accounts-kit'
 
-export const environment = getDeleGatorEnvironment(chain.id)
+export const environment = getSmartAccountsEnvironment(chain.id)
 
 export const publicClient = createPublicClient({
   chain,
@@ -81,15 +81,19 @@ const { availableAmount } = await caveatEnforcerClient.getErc20PeriodTransferEnf
 <TabItem value="config.ts">
 
 ```typescript
-import { createDelegation } from '@metamask/delegation-toolkit'
+import { createDelegation } from '@metamask/smart-accounts-kit'
+import { parseUnits } from 'viem'
+
+// startDate should be in seconds.
+const startDate = Math.floor(Date.now() / 1000);
 
 export const delegation = createDelegation({
   scope: {
     type: 'erc20PeriodTransfer',
     tokenAddress: '0xb4aE654Aca577781Ca1c5DE8FbE60c2F423f37da',
-    periodAmount: 1000000000000000000n,
+    periodAmount: parseUnits('10', 6),
     periodDuration: 86400,
-    startDate: 1743763600,
+    startDate,
   },
   to: delegateAccount,
   from: delegatorAccount,

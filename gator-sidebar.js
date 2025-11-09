@@ -18,32 +18,14 @@ const sidebar = {
         {
           type: 'category',
           label: 'Smart account quickstart',
-          collapsed: false,
+          collapsed: true,
           link: { type: "doc", id: "get-started/smart-account-quickstart/index" },
           items: [
             'get-started/smart-account-quickstart/eip7702',
           ],
         },
-        // 'get-started/erc7715-quickstart',
         'get-started/use-the-cli',
         'get-started/supported-networks',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Concepts',
-      collapsed: false,
-      items: [
-        'concepts/smart-accounts',
-        {
-          type: 'category',
-          label: 'Delegation',
-          collapsed: false,
-          link: { type: "doc", id: "concepts/delegation/index" },
-          items: [
-            'concepts/delegation/caveat-enforcers',
-          ],
-        },
       ],
     },
     {
@@ -55,7 +37,7 @@ const sidebar = {
         {
           type: 'category',
           label: 'MetaMask Smart Accounts',
-          collapsed: false,
+          collapsed: true,
           items: [
             'guides/smart-accounts/create-smart-account',
             'guides/smart-accounts/deploy-smart-account',
@@ -67,13 +49,14 @@ const sidebar = {
         {
           type: 'category',
           label: 'Delegation',
-          collapsed: false,
+          collapsed: true,
+          key: 'delegation-guides',
           items: [
             'guides/delegation/execute-on-smart-accounts-behalf',
             {
               type: 'category',
               label: 'Use delegation scopes',
-              collapsed: false,
+              collapsed: true,
               link: { type: "doc", id: "guides/delegation/use-delegation-scopes/index" },
               items: [
                 'guides/delegation/use-delegation-scopes/spending-limit',
@@ -83,23 +66,52 @@ const sidebar = {
               ],
             },
             'guides/delegation/check-delegation-state',
+            'guides/delegation/disable-delegation',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Advanced Permissions (ERC-7715)',
+          collapsed: true,
+          key: 'advanced-permissions-guides',
+          items: [
+            'guides/advanced-permissions/execute-on-metamask-users-behalf',
+            {
+              type: 'category',
+              label: 'Use permissions',
+              collapsed: true,
+              items: [
+                'guides/advanced-permissions/use-permissions/erc20-token',
+                'guides/advanced-permissions/use-permissions/native-token',
+              ],
+            },
           ],
         },
       ],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Experimental',
-    //   collapsed: false,
-    //   items: [
-    //     'experimental/erc-7715-request-permissions',
-    //     'experimental/erc-7710-redeem-delegations',
-    //   ],
-    // },
+    {
+      type: 'category',
+      label: 'Concepts',
+      collapsed: true,
+      items: [
+        'concepts/smart-accounts',
+        {
+          type: 'category',
+          label: 'Delegation',
+          collapsed: true,
+          key: 'delegation-concepts',
+          link: { type: "doc", id: "concepts/delegation/index" },
+          items: [
+            'concepts/delegation/caveat-enforcers',
+          ],
+        },
+        'concepts/advanced-permissions',
+      ],
+    },
     {
       type: 'category',
       label: 'Tutorials',
-      collapsed: false,
+      collapsed: true,
       items: [
         {
           type: "link",
@@ -126,29 +138,32 @@ const sidebar = {
     {
       type: 'category',
       label: 'Reference',
-      collapsed: false,
+      collapsed: true,
       items: [
         'reference/smart-account',
         {
           type: 'category',
           label: 'Delegation',
-          collapsed: false,
+          collapsed: true,
           link: { type: "doc", id: "reference/delegation/index" },
+          key: 'delegation-reference',
           items: [
             'reference/delegation/delegation-scopes',
             'reference/delegation/caveats',
             'reference/delegation/caveat-enforcer-client',
           ],
         },
-        // {
-        //   type: 'category',
-        //   label: 'ERC-7715',
-        //   collapsed: false,
-        //   items: [
-        //     'reference/erc7715/wallet-client',
-        //     'reference/erc7715/bundler-client',
-        //   ],
-        // },
+        {
+          type: 'category',
+          label: 'Advanced Permissions (ERC-7715)',
+          collapsed: true,
+          key: 'advanced-permissions-reference',
+          items: [
+            'reference/advanced-permissions/permissions',
+            'reference/advanced-permissions/wallet-client',
+            'reference/advanced-permissions/bundler-client',
+          ],
+        },
       ],
     },
   ],
